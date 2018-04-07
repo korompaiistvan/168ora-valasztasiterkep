@@ -94,7 +94,9 @@
               cumulative += +listData[i].szavarany
               listData[i].end = cumulative
             }
-            listData.push({"tnev": "Egyéb", "start": cumulative, "end": 1, "szavarany": 1-cumulative})
+            if (cumulative != 0){
+              listData.push({"tnev": "Egyéb", "start": cumulative, "end": 1, "szavarany": 1-cumulative})
+            }
             var width = svg_w-30
             var height = svg_h-38
             var gPadding = 8
