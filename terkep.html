@@ -178,6 +178,8 @@
               .filter(function(c) {return d.sfevk == c.sfevk && d.sfmaz == c.sfmaz})
               .sort(function(a,b) {return b.szavarany - a.szavarany})
 
+            selDistrictDetails = selDistrictDetails.filter(function(c) {return Math.round(c.szavarany*100)>0})
+
             tooltipHeight = selDistrictDetails.length * barsize
             var gPadding = 8
             var tooltipBand = d3.scaleBand()
@@ -197,7 +199,7 @@
             tooltipLinear.domain(
               [
                 0, 
-                d3.max(selDistrictDetails.map(function(e) {return e.szavarany}))
+                d3.max(selDistrictDetails.map(function(e) {return +e.szavarany}))
               ]
             )
           
